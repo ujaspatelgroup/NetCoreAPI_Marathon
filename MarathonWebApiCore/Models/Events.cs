@@ -15,19 +15,30 @@ namespace MarathonWebApiCore.Models
         }
         [Key]
         public int EventId { get; set; }
+
+        [Required]
         [StringLength(50)]
         public string EventNane { get; set; }
+
+        [Required]
         [Column(TypeName = "datetime")]
         public DateTime? EventStart { get; set; }
+
+        [Required]
         [Column(TypeName = "datetime")]
         public DateTime? EventEnd { get; set; }
+
+        [Required]
         public string EventDec { get; set; }
+
         public int? LocationId { get; set; }
+
         public bool? IsActive { get; set; }
 
         [ForeignKey(nameof(LocationId))]
         [InverseProperty("Events")]
         public virtual Location Location { get; set; }
+
         [InverseProperty("Event")]
         public virtual ICollection<Registration> Registration { get; set; }
     }
